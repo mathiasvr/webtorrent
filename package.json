@@ -91,6 +91,7 @@
     "serve-static": "^1.14.1",
     "standard": "*",
     "tape": "^5.0.1",
+    "terser": "^5.5.0",
     "webtorrent-fixtures": "^1.7.3"
   },
   "engines": {
@@ -137,7 +138,7 @@
     "build": "npm run build-js && npm run build-chromeapp",
     "build-chromeapp": "browserify --browser-field=chromeapp --standalone WebTorrent . | minify --mangle=false > webtorrent.chromeapp.js",
     "build-chromeapp-debug": "browserify --browser-field=chromeapp --standalone WebTorrent . > webtorrent.chromeapp.js",
-    "build-js": "node browserify.js | minify --mangle=false > webtorrent.min.js",
+    "build-js": "node browserify.js | terser --compress > webtorrent.min.js",
     "build-js-debug": "node browserify.js > webtorrent.debug.js",
     "size": "npm run size-js && npm run size-disc",
     "size-disc": "browserify --full-paths . | discify --open",
